@@ -90,6 +90,37 @@ Each main directory contains:
 - Required packages (listed in each directory)
 - Markdown viewer for mobile devices
 
+## Setup
+
+1. **Set Python Version**
+   ```bash
+   pyenv local 3.10.8
+   ```
+
+2. **Create Virtual Environment**
+   ```bash
+   python -m venv .venv
+   ```
+
+3. **Activate Environment**
+   ```bash
+   source .venv/bin/activate  # macOS/Linux
+   .venv\Scripts\activate    # Windows
+   ```
+
+4. **Install Dependencies**
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+5. **Setup Jupyter**
+   ```bash
+   pip install jupyter ipykernel
+   python -m ipykernel install --user --name=python3.10.8 --display-name="Python 3.10.8"
+   ```
+
+For detailed explanations of these commands and additional setup options, refer to [HELPFUL_COMMANDS.md](HELPFUL_COMMANDS.md).
+
 ## Mobile Access
 
 For offline access:
