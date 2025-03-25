@@ -1,7 +1,23 @@
 # Machine Learning Practice Repository
 
-This repository contains my learning materials and practice implementations from various machine learning courses, primarily focusing on Andrew Ng's Machine Learning course on Coursera. The purpose of this repository is to:
+This repository contains my learning materials and practice implementations from various machine learning courses, primarily focusing on Andrew Ng's Machine Learning course on Coursera.
 
+## Table of Contents
+- [Purpose](#purpose)
+- [Project Structure](#project-structure)
+- [Course Content](#course-content)
+- [Getting Started](#getting-started)
+- [Setup Guide](#setup-guide)
+  - [Requirements](#requirements)
+  - [Installation Steps](#installation-steps)
+  - [Notebook Output Handling](#notebook-output-handling)
+- [Mobile Access](#mobile-access)
+- [Contributing](#contributing)
+- [License](#license)
+
+## Purpose
+
+The purpose of this repository is to:
 1. Document my learning journey in machine learning
 2. Maintain organized practice implementations
 3. Keep track of course materials and notes
@@ -41,9 +57,9 @@ Each main directory contains:
   - Includes Evernote notes converted to Markdown
   - Organized by topic
 
-### Course Content
+## Course Content
 
-#### 001 Supervised Learning
+### 001 Supervised Learning
 - **001 Regression**
   - Linear Regression with One Variable
     - Cost function
@@ -64,7 +80,7 @@ Each main directory contains:
     - Forward propagation
     - Activation functions
 
-#### 002 Unsupervised Learning
+### 002 Unsupervised Learning
 - Neural Networks: Learning
   - Backpropagation
   - Cost functions
@@ -83,14 +99,16 @@ Each main directory contains:
    - Practice with `labs/` for hands-on implementation
    - All resources are included within the labs directory
 
-## Requirements
+## Setup Guide
+
+### Requirements
 
 - Python 3.x
 - Jupyter Notebook
 - Required packages (listed in each directory)
 - Markdown viewer for mobile devices
 
-## Setup
+### Installation Steps
 
 1. **Set Python Version**
    ```bash
@@ -99,27 +117,71 @@ Each main directory contains:
 
 2. **Create Virtual Environment**
    ```bash
-   python -m venv .venv
+   python -m venv venv
+   source venv/bin/activate  # On Unix/macOS
+   # or
+   .\venv\Scripts\activate  # On Windows
    ```
 
-3. **Activate Environment**
-   ```bash
-   source .venv/bin/activate  # macOS/Linux
-   .venv\Scripts\activate    # Windows
-   ```
-
-4. **Install Dependencies**
+3. **Install Dependencies**
    ```bash
    pip install -r requirements.txt
    ```
 
-5. **Setup Jupyter**
+4. **Setup Jupyter**
    ```bash
    pip install jupyter ipykernel
    python -m ipykernel install --user --name=python3.10.8 --display-name="Python 3.10.8"
    ```
 
 For detailed explanations of these commands and additional setup options, refer to [HELPFUL_COMMANDS.md](HELPFUL_COMMANDS.md).
+
+### Notebook Output Handling
+
+To keep the repository clean and avoid committing unnecessary notebook outputs (like large data, images, or sensitive information), we use `nbstripout`. This tool automatically strips output cells from Jupyter notebooks before committing them to version control.
+
+#### Setting up nbstripout
+
+1. **Install nbstripout** (already included in requirements.txt)
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+2. **Install Git Hook**
+   ```bash
+   nbstripout --install
+   ```
+   This will automatically strip outputs whenever you commit notebooks.
+
+3. **Configure Git Attributes**
+   Create or update `.gitattributes` in the repository root:
+   ```
+   *.ipynb filter=nbstripout
+   ```
+
+4. **Optional: Customize nbstripout Configuration**
+   Create `.nbstripout` in the repository root to customize what gets stripped:
+   ```json
+   {
+       "keep_output": false,
+       "keep_count": false,
+       "keep_id": false,
+       "keep_metadata": false
+   }
+   ```
+
+#### Manual Usage
+
+If you need to strip outputs manually:
+```bash
+nbstripout notebook.ipynb
+```
+
+#### Benefits
+- Keeps repository size small
+- Prevents committing sensitive data
+- Makes notebook diffs cleaner and more meaningful
+- Ensures consistent notebook state across different environments
 
 ## Mobile Access
 
