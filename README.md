@@ -103,9 +103,9 @@ Each main directory contains:
 
 ### Requirements
 
-- Python 3.x
+- Python 3.10.8 (required)
 - Jupyter Notebook
-- Required packages (listed in each directory)
+- Required packages (listed in requirements.txt)
 - Markdown viewer for mobile devices
 
 ### Installation Steps
