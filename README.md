@@ -107,15 +107,39 @@ Each main directory contains:
 - Jupyter Notebook
 - Required packages (listed in requirements.txt)
 - Markdown viewer for mobile devices
+- Homebrew (for macOS users)
 
 ### Installation Steps
 
-1. **Set Python Version**
+1. **Install Homebrew (macOS users)**
    ```bash
+   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+   ```
+
+2. **Install and Configure pyenv**
+   ```bash
+   # Install pyenv
+   brew install pyenv
+
+   # Add pyenv to shell configuration
+   echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zshrc
+   echo 'command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zshrc
+   echo 'eval "$(pyenv init -)"' >> ~/.zshrc
+
+   # Reload shell configuration
+   source ~/.zshrc
+   ```
+
+3. **Set Python Version**
+   ```bash
+   # Install Python 3.10.8
+   pyenv install 3.10.8
+
+   # Set local Python version
    pyenv local 3.10.8
    ```
 
-2. **Create Virtual Environment**
+4. **Create Virtual Environment**
    ```bash
    python -m venv venv
    source venv/bin/activate  # On Unix/macOS
@@ -123,15 +147,27 @@ Each main directory contains:
    .\venv\Scripts\activate  # On Windows
    ```
 
-3. **Install Dependencies**
+5. **Install Dependencies**
    ```bash
+   # Update pip to latest version (recommended)
+   pip install --upgrade pip
+
+   # Install required packages
    pip install -r requirements.txt
    ```
 
-4. **Setup Jupyter**
+6. **Setup Jupyter**
    ```bash
-   pip install jupyter ipykernel
+   # Install and configure Jupyter kernel
    python -m ipykernel install --user --name=python3.10.8 --display-name="Python 3.10.8"
+   ```
+
+7. **Start Jupyter**
+   ```bash
+   # Start Jupyter Notebook
+   jupyter notebook
+   # or
+   jupyter lab  # For JupyterLab interface
    ```
 
 For detailed explanations of these commands and additional setup options, refer to [HELPFUL_COMMANDS.md](HELPFUL_COMMANDS.md).
