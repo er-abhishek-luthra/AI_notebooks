@@ -9,6 +9,7 @@ This repository contains my learning materials and practice implementations from
 - [Getting Started](#getting-started)
 - [Setup Guide](#setup-guide)
   - [Requirements](#requirements)
+  - [Additional Packages](#additional-packages)
   - [Installation Steps](#installation-steps)
   - [Notebook Output Handling](#notebook-output-handling)
 - [Mobile Access](#mobile-access)
@@ -108,6 +109,27 @@ Each main directory contains:
 - Required packages (listed in requirements.txt)
 - Markdown viewer for mobile devices
 - Homebrew (for macOS users)
+
+### Additional Packages
+
+Depending on your specific needs, you might need to install additional packages:
+
+1. **Deep Learning**
+   ```bash
+   pip install tensorflow>=2.15.0  # For deep learning
+   ```
+
+2. **Data Processing**
+   ```bash
+   pip install pandas  # For data manipulation
+   pip install seaborn  # For statistical visualizations
+   ```
+
+3. **Image Processing**
+   ```bash
+   pip install opencv-python  # For computer vision
+   pip install pillow  # For image processing
+   ```
 
 ### Installation Steps
 
