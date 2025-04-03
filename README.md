@@ -104,11 +104,9 @@ Each main directory contains:
 
 ### Requirements
 
-- Python 3.10.8 (required)
-- Jupyter Notebook
-- Required packages (listed in requirements.txt)
-- Markdown viewer for mobile devices
-- Homebrew (for macOS users)
+- [Anaconda](https://www.anaconda.com/products/distribution) (recommended) or [Miniconda](https://docs.conda.io/en/latest/miniconda.html)
+- Git for version control
+- A text editor or IDE (e.g., VSCode, PyCharm)
 
 ### Additional Packages
 
@@ -133,66 +131,92 @@ Depending on your specific needs, you might need to install additional packages:
 
 ### Installation Steps
 
-1. **Install Homebrew (macOS users)**
+1. **Install Anaconda**
+   - Download and install Anaconda from [https://www.anaconda.com/products/distribution](https://www.anaconda.com/products/distribution)
+   - Verify installation:
+     ```bash
+     conda --version
+     ```
+
+2. **Clone Repository**
    ```bash
-   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+   git clone https://github.com/yourusername/your-repo.git
+   cd your-repo
    ```
 
-2. **Install and Configure pyenv**
+3. **Create and Activate Conda Environment**
    ```bash
-   # Install pyenv
-   brew install pyenv
+   # Create environment from environment.yml
+   conda env create -f environment.yml
 
-   # Add pyenv to shell configuration
-   echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zshrc
-   echo 'command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zshrc
-   echo 'eval "$(pyenv init -)"' >> ~/.zshrc
-
-   # Reload shell configuration
-   source ~/.zshrc
+   # Activate the environment
+   conda activate ainotebooks
    ```
 
-3. **Set Python Version**
+4. **Verify Installation**
    ```bash
-   # Install Python 3.10.8
-   pyenv install 3.10.8
+   # Check Python version
+   python --version
 
-   # Set local Python version
-   pyenv local 3.10.8
+   # Check if key packages are installed
+   python -c "import tensorflow; print(tensorflow.__version__)"
+   python -c "import numpy; print(numpy.__version__)"
    ```
 
-4. **Create Virtual Environment**
+### Managing the Environment
+
+1. **Daily Usage**
    ```bash
-   python -m venv venv
-   source venv/bin/activate  # On Unix/macOS
-   # or
-   .\venv\Scripts\activate  # On Windows
+   # Activate the environment
+   conda activate ainotebooks
+
+   # Deactivate when done
+   conda deactivate
    ```
 
-5. **Install Dependencies**
+2. **Installing Additional Packages**
    ```bash
-   # Update pip to latest version (recommended)
-   pip install --upgrade pip
+   # Using conda
+   conda install package_name
 
-   # Install required packages
-   pip install -r requirements.txt
+   # Using pip (if package not available in conda)
+   pip install package_name
    ```
 
-6. **Setup Jupyter**
+3. **Updating Packages**
    ```bash
-   # Install and configure Jupyter kernel
-   python -m ipykernel install --user --name=python3.10.8 --display-name="Python 3.10.8"
+   # Update all packages
+   conda update --all
+
+   # Update specific package
+   conda update package_name
    ```
 
-7. **Start Jupyter**
+4. **Environment Management**
    ```bash
+   # List all environments
+   conda env list
+
+   # Export environment
+   conda env export > environment.yml
+
+   # Remove environment
+   conda env remove --name ainotebooks
+   ```
+
+### Running Jupyter Notebooks
+
+1. **Start Jupyter**
+   ```bash
+   # Make sure your environment is activated
+   conda activate ainotebooks
+
    # Start Jupyter Notebook
    jupyter notebook
-   # or
-   jupyter lab  # For JupyterLab interface
    ```
 
-For detailed explanations of these commands and additional setup options, refer to [HELPFUL_COMMANDS.md](HELPFUL_COMMANDS.md).
+2. **Select Kernel**
+   - In your notebook, select Kernel → Change kernel → Python [conda env:ainotebooks]
 
 ### Notebook Output Handling
 
@@ -240,6 +264,29 @@ nbstripout notebook.ipynb
 - Prevents committing sensitive data
 - Makes notebook diffs cleaner and more meaningful
 - Ensures consistent notebook state across different environments
+
+### Troubleshooting
+
+1. **Package Conflicts**
+   - If you encounter package conflicts, try:
+     ```bash
+     conda install package_name=version
+     ```
+   - Or update your environment.yml and recreate the environment
+
+2. **Kernel Issues**
+   - If Jupyter doesn't recognize your environment:
+     ```bash
+     python -m ipykernel install --user --name=ainotebooks
+     ```
+
+3. **Environment Problems**
+   - If your environment becomes corrupted:
+     ```bash
+     # Remove and recreate
+     conda env remove --name ainotebooks
+     conda env create -f environment.yml
+     ```
 
 ## Mobile Access
 
