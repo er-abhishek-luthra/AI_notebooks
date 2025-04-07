@@ -204,6 +204,12 @@ Depending on your specific needs, you might need to install additional packages:
    conda env remove --name ainotebooks
    ```
 
+5. **Updating Environment with New Dependencies**
+   ```bash
+   # Update the environment with new dependencies from environment.yml
+   conda env update --file environment.yml --prune
+   ```
+
 ### Running Jupyter Notebooks
 
 1. **Start Jupyter**

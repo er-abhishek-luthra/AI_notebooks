@@ -14,6 +14,7 @@ dependencies:
   - ipympl>=0.9.7
   - nbstripout>=0.6.1
   - tensorflow==2.10.0
+  - sympy==1.13.3
 
 
 
