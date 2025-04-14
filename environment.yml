@@ -17,6 +17,7 @@ dependencies:
   - sympy==1.13.3
   - networkx>=3.4.2
   - pydot>=3.0.4
+  - xgboost>=3.0.0
 
 
 
